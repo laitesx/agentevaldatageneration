@@ -37,7 +37,7 @@ def make_2d_squares_and_blobs_with_outliers(
         square_centers.append(numpy.random.uniform(center_box[0], center_box[1], size=2))
 
         for j in range(0, shape_samples[i + n_clusters]):
-            x_point = numpy.random.uniform(square_centers[i][0], square_centers[i][1])
+            x_point = numpy.random.uniform(square_centers[i][0], square_centers[i][0])
             y_point = numpy.random.uniform(square_centers[i][0], square_centers[i][1])
 
             x.append(numpy.random.normal(loc=(x_point, y_point), scale=0.1, size=2))
@@ -47,11 +47,11 @@ def make_2d_squares_and_blobs_with_outliers(
         outlier_shape = numpy.random.randint(0, n_clusters + n_squares)
 
         if outlier_shape < n_clusters:
-            outlier_loc = numpy.random.normal(loc=cluster_centers[outlier_shape], scale=3.0, size=2)
+            outlier_loc = numpy.random.normal(loc=cluster_centers[0], scale=3.0, size=2)
             x.append(outlier_loc)
             y.append(outlier_shape)
         else:
-            outlier_loc = numpy.random.normal(loc=square_centers[outlier_shape - n_clusters], scale=3.0, size=2)
+            outlier_loc = numpy.random.normal(loc=square_centers[n_clusters - 1], scale=0.25, size=2)
             x.append(outlier_loc)
             y.append(outlier_shape)
 
@@ -60,7 +60,10 @@ def make_2d_squares_and_blobs_with_outliers(
 
 def main():
     x, y = make_2d_squares_and_blobs_with_outliers(
-        n_samples=500
+        n_samples=500,
+        n_clusters = 5,
+        n_squares = 5,
+        n_outliers = 100
     )
 
     x_coords = [a[0] for a in x]
