@@ -51,7 +51,7 @@ def make_2d_squares_and_blobs_with_outliers(
             x.append(outlier_loc)
             y.append(outlier_shape)
         else:
-            outlier_loc = numpy.random.normal(loc=cluster_centers[outlier_shape - n_clusters], scale=3.0, size=2)
+            outlier_loc = numpy.random.normal(loc=square_centers[outlier_shape - n_clusters], scale=3.0, size=2)
             x.append(outlier_loc)
             y.append(outlier_shape)
 
