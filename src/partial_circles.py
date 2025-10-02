@@ -2,7 +2,7 @@ import numpy
 import matplotlib.pyplot as pyplot
 
 
-def make_2d_moons_and_circles(
+def make_2d_partial_circles(
         n_samples=250,
         n_circles=2,
         *,
@@ -38,7 +38,7 @@ def make_2d_moons_and_circles(
 
 
 def main():
-    x, y = make_2d_moons_and_circles(
+    x, y = make_2d_partial_circles(
         n_samples=500,
         n_circles=5,
     )
