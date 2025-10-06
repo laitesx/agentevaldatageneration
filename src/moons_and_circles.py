@@ -22,6 +22,9 @@ def make_2d_moons_and_circles(
     x = []
     y = []
 
+    circle_locs = []
+    moon_locs = []
+
     for i in range(0, n_moons):
         moon_shape = numpy.random.randint(0, 2)
 
@@ -36,6 +39,7 @@ def make_2d_moons_and_circles(
             moon_y = 1 - numpy.sin(numpy.linspace(0, numpy.pi, shape_samples[i]))
 
         moon_loc = numpy.random.uniform(center_box[0], center_box[1], size=2)
+        moon_locs.append(moon_loc)
 
         for j in range(0, shape_samples[i]):
             x.append(numpy.random.normal(loc=(moon_x[j] + moon_loc[0], moon_y[j] + moon_loc[1]), scale=0.1, size=2))
@@ -50,16 +54,17 @@ def make_2d_moons_and_circles(
         circle_y = numpy.sin(linspace) * circle_size
 
         circle_loc = numpy.random.uniform(center_box[0], center_box[1], size=2)
+        circle_locs.append(circle_loc)
 
         for j in range(0, shape_samples[i + n_moons]):
             x.append(numpy.random.normal(loc=(circle_x[j] + circle_loc[0], circle_y[j] + circle_loc[1]), scale=0.1, size=2))
             y.append(i + n_circles)
 
-    return x, y
+    return x, y, circle_locs, moon_locs
 
 
 def main():
-    x, y = make_2d_moons_and_circles(
+    x, y, circle_locs, moon_locs = make_2d_moons_and_circles(
         n_samples=500,
         n_circles=3,
         n_moons=3

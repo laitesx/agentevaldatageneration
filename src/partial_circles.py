@@ -20,6 +20,8 @@ def make_2d_partial_circles(
     x = []
     y = []
 
+    circle_locs = []
+
     for i in range(0, n_circles):
         circle_size = numpy.random.rand() * 5
 
@@ -29,16 +31,17 @@ def make_2d_partial_circles(
         circle_y = numpy.sin(linspace) * circle_size
 
         circle_loc = numpy.random.uniform(center_box[0], center_box[1], size=2)
+        circle_locs.append(circle_loc)
 
         for j in range(0, shape_samples[i]):
             x.append(numpy.random.normal(loc=(circle_x[j] + circle_loc[0], circle_y[j] + circle_loc[1]), scale=0.1, size=2))
             y.append(i)
 
-    return x, y
+    return x, y, circle_locs
 
 
 def main():
-    x, y = make_2d_partial_circles(
+    x, y, circle_locs = make_2d_partial_circles(
         n_samples=500,
         n_circles=5,
     )

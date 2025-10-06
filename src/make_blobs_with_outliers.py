@@ -36,11 +36,11 @@ def make_2d_blobs_with_outliers(
         x.append(outlier_loc)
         y.append(outlier_cluster)
 
-    return x, y
+    return x, y, cluster_centers
 
 
 def main():
-    x, y = make_2d_blobs_with_outliers(
+    x, y, cluster_centers = make_2d_blobs_with_outliers(
         n_samples=450,
         n_clusters=4,
         n_outliers=50

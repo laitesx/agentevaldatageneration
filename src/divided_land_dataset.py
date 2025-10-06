@@ -41,18 +41,18 @@ def make_2d_divided_land_dataset(
     for i in range(0, n_mid_line_samples):
         random_point = numpy.random.uniform(center_box[0], center_box[1])
         x.append([random_point, random_point])
-        y.append(n_clusters + 1)
+        y.append(n_clusters)
 
     for i in range(0, n_mid_line_outliers):
         random_point = numpy.random.uniform(center_box[0], center_box[1])
         x.append(numpy.random.normal(loc=[random_point, random_point], scale=1.5, size=2))
-        y.append(n_clusters + 1)
+        y.append(n_clusters)
 
-    return x, y
+    return x, y, cluster_centers
 
 
 def main():
-    x, y = make_2d_divided_land_dataset(
+    x, y, cluster_centers = make_2d_divided_land_dataset(
         n_mid_line_samples=250,
         n_mid_line_outliers=25,
         n_samples=450,

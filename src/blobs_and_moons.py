@@ -24,6 +24,7 @@ def make_2d_blobs_and_moons(
     y = []
 
     cluster_centers = []
+    moon_locs = []
 
     for i in range(0, n_clusters):
         cluster_centers.append(numpy.random.uniform(center_box[0], center_box[1], size=2))
@@ -46,16 +47,17 @@ def make_2d_blobs_and_moons(
             moon_y = 1 - numpy.sin(numpy.linspace(0, numpy.pi, shape_samples[i + n_clusters]))
 
         moon_loc = numpy.random.uniform(center_box[0], center_box[1], size=2)
+        moon_locs.append(moon_loc)
 
         for j in range(0, shape_samples[i + n_clusters]):
             x.append(numpy.random.normal(loc=(moon_x[j] + moon_loc[0], moon_y[j] + moon_loc[1]), scale=0.1, size=2))
             y.append(i + n_clusters)
 
-    return x, y
+    return x, y, cluster_centers, moon_locs
 
 
 def main():
-    x, y = make_2d_blobs_and_moons(
+    x, y, cluster_centers, moon_locs = make_2d_blobs_and_moons(
         n_samples=500,
         n_clusters=4
     )
