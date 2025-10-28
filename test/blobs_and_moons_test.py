@@ -1,7 +1,10 @@
 import unittest
 import math
 
-from src.blobs_and_moons import make_2d_blobs_and_moons
+try:
+    from src.blobs_and_moons import make_2d_blobs_and_moons
+except ImportError:
+    from ..src.blobs_and_moons import make_2d_blobs_and_moons
 
 
 class TestBlobsAndMoons(unittest.TestCase):

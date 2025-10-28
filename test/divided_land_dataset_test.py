@@ -1,7 +1,10 @@
 import unittest
 import math
 
-from src.divided_land_dataset import make_2d_divided_land_dataset
+try:
+    from src.divided_land_dataset import make_2d_divided_land_dataset
+except ImportError:
+    from ..src.divided_land_dataset import make_2d_divided_land_dataset
 
 
 class TestDividedLandDataset(unittest.TestCase):

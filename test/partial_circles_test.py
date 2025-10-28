@@ -1,7 +1,10 @@
 import unittest
 import math
 
-from src.partial_circles import make_2d_partial_circles
+try:
+    from src.partial_circles import make_2d_partial_circles
+except ImportError:
+    from ..src.partial_circles import make_2d_partial_circles
 
 
 class PartialCirclesTest(unittest.TestCase):

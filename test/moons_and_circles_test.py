@@ -1,7 +1,10 @@
 import unittest
 import math
 
-from src.moons_and_circles import make_2d_moons_and_circles
+try:
+    from src.moons_and_circles import make_2d_moons_and_circles
+except ImportError:
+    from ..src.moons_and_circles import make_2d_moons_and_circles
 
 
 class TestMoonsAndCircles(unittest.TestCase):

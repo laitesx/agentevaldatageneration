@@ -1,7 +1,10 @@
 import unittest
 import math
 
-from src.make_blobs_with_outliers import make_2d_blobs_with_outliers
+try:
+    from src.make_blobs_with_outliers import make_2d_blobs_with_outliers
+except ImportError:
+    from ..src.make_blobs_with_outliers import make_2d_blobs_with_outliers
 
 
 class TestMakeBlobsWithOutliers(unittest.TestCase):
